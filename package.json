@@ -1,24 +1,18 @@
 {
-  "name": "wcf_tester",
-  "version": "1.0.0",
-  "description": "WCF Services Tester",
+  "name": "wcftester",
+  "version": "0.0.0",
+  "description": "",
   "main": "index.js",
-  "dependencies": {
-    "react": "^0.12.0"
-  },
-  "devDependencies": {},
   "scripts": {
-    "test": "test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/scavenger/wcf_tester"
-  },
-  "keywords": [
-    "wcf"
-  ],
-  "bugs": {
-    "url": "https://github.com/scavenger/wcf_tester/issues"
-  },
-  "homepage": "https://github.com/scavenger/wcf_tester"
+  "repository": "",
+  "author": "cbancu",
+  "license": "BSD",
+  "dependencies": {
+    "good": "^3.1.0",
+    "hapi": "^7.2.0",
+    "mongodb": "^1.4.19",
+    "toothache": "^1.1.1"
+  }
 }
