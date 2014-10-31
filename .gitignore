@@ -1,3 +1,6 @@
+# generated files
+dist
+
 # Logs
 logs
 *.log
