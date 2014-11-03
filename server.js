@@ -86,7 +86,9 @@ server.pack.register([
 			path: '/testservice',
 			method : 'POST',
 			handler : function(request, reply) {
-				var url = request.payload;	
+				var url = request.payload.url;
+				
+				console.log(url);
 				
 				soap.createClient(url, function(err, client){
 					if(!client) {
