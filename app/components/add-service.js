@@ -13,7 +13,7 @@ var AddService = React.createClass({
         e.preventDefault();
         
         if (this.state.value) {
-            Actions.addService(this.state.value);
+            Actions.addService({uri: this.state.value});
             this.setState({value: ''});
         }
     },

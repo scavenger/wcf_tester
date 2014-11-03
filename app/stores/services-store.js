@@ -1,10 +1,10 @@
 var $ = require('jquery');
 var Reflux = require('reflux');
-var Actions = require('./actions');
+var Actions = require('../actions');
 
 var SERVICES_URL = 'http://localhost:27321/services';
 
-var Store = Reflux.createStore({
+var ServicesStore = Reflux.createStore({
     services: [],
     listenables: Actions,
     onLoadServices: function() {
@@ -13,8 +13,8 @@ var Store = Reflux.createStore({
             this.trigger(this.services);
         }.bind(this));
     },
-    onAddService: function(serviceUri) {
-        $.post(SERVICES_URL, { uri: serviceUri }).done(function(data) {
+    onAddService: function(service) {
+        $.post(SERVICES_URL, service).done(function(data) {
             this.services.push(data);
             this.trigger(this.services);
         }.bind(this));
@@ -33,4 +33,4 @@ var Store = Reflux.createStore({
     }
 });
 
-module.exports = Store;
+module.exports = ServicesStore;

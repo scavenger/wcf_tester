@@ -3,7 +3,9 @@ var Reflux = require('reflux');
 var Actions = Reflux.createActions([
     'loadServices',
     'addService',
-    'deleteService'
+    'deleteService',
+    'testService',
+    'testMethod'
 ]);
 
 Actions.loadServices();

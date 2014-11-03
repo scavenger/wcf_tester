@@ -1,8 +1,10 @@
 /** @jsx React.DOM */
 var React = require('react');
 var Reflux = require('reflux');
-var Store = require('../store');
+var TestService = require('./test-service');
 var DeleteService = require('./delete-service');
+var MethodsList = require('./methods-list');
+var ServicesStore = require('../stores/services-store');
 
 var ServicesList = React.createClass({
     mixins: [Reflux.ListenerMixin],
@@ -10,7 +12,7 @@ var ServicesList = React.createClass({
         return {services: []};
     },
     componentDidMount: function() {
-        this.listenTo(Store, this.onServicesChange);
+        this.listenTo(ServicesStore, this.onServicesChange);
     },
     onServicesChange: function(services) {
         this.setState({services: services});
@@ -20,7 +22,11 @@ var ServicesList = React.createClass({
             return (
                 <li className="list-group-item" key={service._id}>
                     <label>{service.uri}</label>
-                    <DeleteService service={service} />
+                    <span className="pull-right">
+                        <TestService service={service} />
+                        <DeleteService service={service} />
+                    </span>
+                    <MethodsList service={service} />
                 </li>
             );
         }.bind(this));
