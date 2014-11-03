@@ -21,7 +21,8 @@
     "confidence": "~0.12.1",
     "handlebars": "~2.0.0-alpha.4",
     "request": "~2.47.0",
-    "q": "~1.0.1"
+    "q": "~1.0.1",
+    "reflux": "~0.1.13"
   },
   "devDependencies": {
     "gulp": "^3.7.0",
