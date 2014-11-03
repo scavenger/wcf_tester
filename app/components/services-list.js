@@ -1,20 +1,22 @@
 /** @jsx React.DOM */
 var React = require('react');
-var app = require('../app');
+var Reflux = require('reflux');
+var Store = require('../store');
 
 var ServicesList = React.createClass({
+    mixins: [Reflux.ListenerMixin],
     getInitialState: function() {
-        return {services: app.services};
+        return {services: []};
     },
     componentDidMount: function() {
-        var _this = this;
-        app.onAddService(function() {
-            _this.setState({services: app.services});
-        });
+        this.listenTo(Store, this.onServicesChange);
+    },
+    onServicesChange: function(services) {
+        this.setState({services: services});
     },
     render: function() {
         var services = this.state.services.map(function(service) {
-            return <li className="list-group-item">{service}</li>;
+            return <li className="list-group-item" key={service._id}>{service.uri}</li>;
         });
         return (
             <ul className="list-group">

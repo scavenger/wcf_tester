@@ -1,18 +1,21 @@
 /** @jsx React.DOM */
 var React = require('react');
-var app = require('../app');
+var Actions = require('../actions');
 
 var AddService = React.createClass({
     getInitialState: function() {
         return {value: ''};
     },
-	onChange: function(e) {
-		this.setState({value: e.target.value});
-	},
+    onChange: function(e) {
+        this.setState({value: e.target.value});
+    },
     handleSubmit: function(e) {
         e.preventDefault();
-    	app.addService(this.state.value);
-        this.setState({value: ''});
+        
+        if (this.state.value) {
+            Actions.addService(this.state.value);
+            this.setState({value: ''});
+        }
     },
     render: function() {
         return (

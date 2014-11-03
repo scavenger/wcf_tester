@@ -1,9 +1,10 @@
 /** @jsx React.DOM */
 var React = require('react');
+var Reflux = require('reflux');
 var AddService = require('./add-service');
 var ServicesList = require('./services-list');
 
-var APP = React.createClass({
+var App = React.createClass({
     render: function() {
         return (
             <div>
@@ -15,4 +16,4 @@ var APP = React.createClass({
     }
 });
 
-module.exports = APP;
+module.exports = App;
