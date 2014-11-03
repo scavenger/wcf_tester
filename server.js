@@ -1,7 +1,9 @@
 
 var Hapi = require('hapi');
 var Good = require('good');
+var soap = require('soap');
 var WcfRepoAdapter = require('./lib/wcfServRepo');
+var caller = require('./lib/wcfcaller');
 
 var server = Hapi.createServer('localhost', process.env.PORT || 27321, {
     cors: true
@@ -79,7 +81,57 @@ server.pack.register([
 				index: true
 			}
 		}
-	   }
+	   },
+		{
+			path: '/testservice',
+			method : 'POST',
+			handler : function(request, reply) {
+				var url = request.payload;	
+				
+				soap.createClient(url, function(err, client){
+					if(!client) {
+						reply([]);
+						return;
+					}
+					
+					var methods = [];
+					
+					var callList = caller.buildCallList(client);
+					callList.forEach(function(el, idx){
+							methods.push(el.method);
+					});
+					
+					reply(methods);
+				});
+			}
+		},
+		
+		{
+			path: '/testmethod',
+			method : 'POST',
+			handler : function(request,reply) { 
+			
+				var url = request.payload.url;
+				var method = request.payload.method;
+				
+				soap.createClient(url, function(err, client){
+					if(client){ // it should be always true 
+					
+						var callList = caller.buildCallList(client);
+						
+						callList.forEach(function(el, idx){ 
+							// search for api input 
+							if(el.method === method) {
+									client[method](el.input, function(err, result) {
+										reply(result[el.output].ErrorCode);
+									});
+								return;
+							}
+						});
+					}
+				});
+			}
+		}
 	]);
 		
 		server.start(function() {
