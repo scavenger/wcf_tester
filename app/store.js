@@ -19,9 +19,9 @@ var Store = Reflux.createStore({
             this.trigger(this.services);
         }.bind(this));
     },
-    onDeleteService: function(serviceId) {
+    onDeleteService: function(service) {
         $.ajax({
-            url: SERVICES_URL + '/' + serviceId,
+            url: SERVICES_URL + '/' + service._id,
             type: 'delete'
         }).done(function(data) {
             var index = this.services.indexOf(service);

@@ -2,6 +2,7 @@
 var React = require('react');
 var Reflux = require('reflux');
 var Store = require('../store');
+var DeleteService = require('./delete-service');
 
 var ServicesList = React.createClass({
     mixins: [Reflux.ListenerMixin],
@@ -16,8 +17,14 @@ var ServicesList = React.createClass({
     },
     render: function() {
         var services = this.state.services.map(function(service) {
-            return <li className="list-group-item" key={service._id}>{service.uri}</li>;
-        });
+            return (
+                <li className="list-group-item" key={service._id}>
+                    <label>{service.uri}</label>
+                    <DeleteService service={service} />
+                </li>
+            );
+        }.bind(this));
+
         return (
             <ul className="list-group">
                 {services}
