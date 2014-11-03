@@ -11,12 +11,16 @@ var MethodsList = React.createClass({
     componentDidMount: function() {
         this.listenTo(TestStore, this.onMethodsChange);
     },
-    onServicesChange: function(methods) {
+    onMethodsChange: function(methods) {
         this.setState({methods: methods});
     },
     render: function() {
-        var methods = this.state.methods.map(function(method) {
-            var className = method.errorCode ? 'text-success' : 'text-danger';
+		var serviceMethods = this.state.methods[this.props.service._id];
+		if (!serviceMethods)
+			serviceMethods = [];
+			
+        var methods = serviceMethods.map(function(method) {
+            var className = method.errorCode == 0 ? 'text-success' : 'text-danger';
             return (
                 <li className="list-group-item" key={method._id}>
                     <span className={className}>{method.name}</span>
