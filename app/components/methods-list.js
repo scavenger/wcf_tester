@@ -17,19 +17,19 @@ var MethodsList = React.createClass({
     render: function() {
 		var serviceMethods = this.state.methods[this.props.service._id];
 		if (!serviceMethods)
-			serviceMethods = [];
+			return (<span></span>);
 			
         var methods = serviceMethods.map(function(method) {
             var className = method.errorCode == 0 ? 'text-success' : 'text-danger';
             return (
-                <li className="list-group-item" key={method._id}>
+                <li className="list-group-item col-xs-3" key={method._id}>
                     <span className={className}>{method.name}</span>
                 </li>
             );
         }.bind(this));
 
         return (
-            <ul className="list-group">
+            <ul className="list-group row">
                 {methods}
             </ul>
         );
