@@ -18,7 +18,11 @@ var TestStore = Reflux.createStore({
     },    
     onTestMethod: function(id, url, method) {
         $.post(TEST_METHOD_URL, {url: url, method: method}).done(function(data) {
-			this.methods[id].push({name: method, errorCode: data});
+			this.methods[id].push({
+				name: method, 
+				errorCode: data.errorCode, 
+				errorDescription : data.errorDescription
+			});
             this.trigger(this.methods);
         }.bind(this));
     }

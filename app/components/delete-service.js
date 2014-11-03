@@ -8,8 +8,8 @@ var DeleteService = React.createClass({
     },
     render: function() {
         return (
-            <button className="btn btn-sm btn-danger" onClick={this.clickHandler}>
-                <span className="glyphicon glyphicon-trash text-danger"></span>
+            <button className="btn btn-sm" onClick={this.clickHandler}>
+                <span className="glyphicon glyphicon-trash"></span>
             </button>
         );
     }

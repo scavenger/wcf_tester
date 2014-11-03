@@ -125,7 +125,7 @@ server.pack.register([
 							// search for api input 
 							if(el.method === method) {
 									client[method](el.input, function(err, result) {
-										reply(result[el.output].ErrorCode);
+										reply({errorCode : result[el.output].ErrorCode, errorDescription : result[el.output].ErrorDescription});
 									});
 								return;
 							}

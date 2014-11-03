@@ -20,9 +20,17 @@ var MethodsList = React.createClass({
 			return (<span></span>);
 			
         var methods = serviceMethods.map(function(method) {
-            var className = method.errorCode == 0 ? 'text-success' : 'text-danger';
+			
+			var badge = '';
+			var className = 'text-success';
+			if(method.errorCode != 0) {
+				badge = <span className="badge">{method.errorCode}</span>;
+				className = 'text-danger';
+			}
+			
             return (
-                <li className="list-group-item col-xs-3" key={method._id}>
+                <li className="list-group-item col-xs-4" key={method._id}>
+					{badge}
                     <span className={className}>{method.name}</span>
                 </li>
             );
