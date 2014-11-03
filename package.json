@@ -22,7 +22,8 @@
     "handlebars": "~2.0.0-alpha.4",
     "request": "~2.47.0",
     "q": "~1.0.1",
-    "reflux": "~0.1.13"
+    "reflux": "~0.1.13",
+    "soap": "~0.6.0"
   },
   "devDependencies": {
     "gulp": "^3.7.0",
