@@ -8,7 +8,7 @@ var App = React.createClass({
     render: function() {
         return (
             <div>
-                <h1>WCF Nurse</h1>
+                <h1>WCF Health Checker</h1>
                 <AddService />
                 <ServicesList />
             </div>
