@@ -1,7 +1,7 @@
 var soap = require('soap');
 var caller = require('../lib/wcfcaller');
 
-var url = 'http://buch-cristianmi.sparkware.corp/ODS/Services/DictionariesService.svc?wsdl';
+var url = 'http://localhost/ODS/Services/AccountService.svc?wsdl'; //'http://buch-cristianmi.sparkware.corp/ODS/Services/DictionariesService.svc?wsdl';
 
 soap.createClient(url, function(err, client){
 	if(client){
